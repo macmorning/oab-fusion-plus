@@ -1,10 +1,16 @@
-# OAB Fusion Enhancer
+# Oracle Fusion Enhancer
 
 ## Raison d'être et fonctionnalités
 
 Cette extension est destinée aux utilisateurs de Oracle Fusion et en particulier (pour le moment) des Timesheets pour leur faciliter la tâche de saisie des temps.
 L'extension n'est pour le moment pas publiée sur un store, elle doit être installée manuellement, voir la section suivante.
 
+
+0.3.0:
+- recherche des éléments à redimensionner par les classes des tables parentes plutôt que par des libellés
+- stockage des codes projets dans le localStorage (en prévision de leur réutilisation dans une future version)
+0.2.0:
+- déclenchement du redimensionnement sur observation d'un évènement plutôt que sur un timeout
 0.1.0:
 - extension de la largeur de la table de saisie des temps permettant de lire les codes projets sélectionnés
 

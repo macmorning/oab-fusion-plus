@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "OAB Fusion Enhancer",
-  "version": "0.1.0",
-  "description": "Fusion enhancer for OAB",
-  "homepage_url": "https://github.com/macmorning/pomodoro-webext",
+  "name": "Oracle Fusion Enhancer",
+  "version": "0.3.0",
+  "description": "Oracle Fusion enhancer for users",
+  "homepage_url": "https://github.com/macmorning/oab-fusion-plus",
   "icons": {
     "48": "icons/icon-48.png"
   },
@@ -13,5 +13,5 @@
       "js": ["enhance.js"]
     }
   ],
-  "permissions": []
+  "permissions": ["storage"]
 }

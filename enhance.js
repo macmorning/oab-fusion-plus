@@ -1,20 +1,73 @@
-window.setInterval(() => {
-    let timecardsHeadersTable = document.querySelectorAll("table[summary='This table contains column headers corresponding to the data body table below']")[1]
-    timecardsHeadersTable.style.width = "100%";
-    timecardsHeadersTable.style.minWidth = "1500px";
-    timecardsHeadersTable.style.tableLayout = "auto";
-    timecardsHeadersTable.querySelector("th").style.width = "25%";
+const context = {
+    projectCodes: localStorage.projectCodes || {}, // collection of objects: projectCode: { show: bool, new: bool }
+    observer: false
+}
 
+chrome.storage.local.get(["projectCodes"], (result) => {
+    console.log("Loaded projectCodes from storage");
+    context.projectCodes = JSON.parse(result.projectCodes);
+    console.log(context.projectCodes);
+});
+/**
+ * Saves the options into storage
+ */
+const saveCodes = () => {
+    try {
+        chrome.storage.local.set({
+            "projectCodes": JSON.stringify(context.projectCodes)
+        }, function () {
+            console.log("Saved projects to storage");
+        });
+    } catch (e) {
+        console.log(e);
+    }
+};
 
-    let timecardsTable = document.querySelector("table[summary='Time Card Entries']");
-    timecardsTable.style.width = "100%";
-    timecardsTable.style.minWidth = "1500px";
+const resizeTable = () => {
+    let timecardsHeadersTable = document.querySelectorAll("table.x1nz")[1];
+    let timecardsTable = document.querySelector("table.x1nq.x1oe");
 
-    innerTables = timecardsTable.querySelectorAll("table:not([role='presentation'])");
-    [].forEach.call(innerTables, (el) => {
-        el.style.tableLayout = "auto";
-        el.style.width = "100%";
-        el.style.minWidth = "400px";
-        el.querySelector("td").style.width = "25%"; // first td child is project code
+    let projectCodes = document.querySelectorAll('input[role="combobox"]');
+    [].forEach.call(projectCodes, (el) => {
+        if (context.projectCodes[el.value] === undefined) {
+            context.projectCodes[el.value] = { show: true, new: true };
+        }
     });
-}, 1000);
+    saveCodes();
+
+    if (timecardsHeadersTable) {
+        timecardsHeadersTable.style.width = "100%";
+        timecardsHeadersTable.style.tableLayout = "auto";
+        timecardsHeadersTable.querySelector("th").style.minWidth = "300px";
+    }
+
+    if (timecardsTable) {
+        timecardsTable.style.width = "100%";
+        timecardsTable.style.tableLayout = "auto";
+
+        innerTables = timecardsTable.querySelectorAll("table:not([role='presentation'])");
+        [].forEach.call(innerTables, (el) => {
+            el.style.tableLayout = "auto";
+            el.style.width = "100%";
+            el.querySelector("td").style.minWidth = "300px"; // first td child is project code
+        });
+    }
+};
+
+const initListener = () => {
+    if (window.location.search.indexOf("fndGlobalItemNodeId=timecards")) {
+        let baseElement = document.querySelector("div"); // First div of document is what we're looking for
+        if (baseElement) {
+            // Create an observer instance linked to the callback function
+            context.observer = new MutationObserver(resizeTable);
+            // Start observing the target node for configured mutations
+            const config = { attributes: false, childList: true, subtree: true };
+            context.observer.observe(baseElement, config);
+        }
+    } else if (context.observer) {
+        // Nothing to observe here, disconnect
+        context.observer.disconnect();
+    }
+};
+window.addEventListener("load", initListener);
+window.addEventListener("hashchange", initListener);
