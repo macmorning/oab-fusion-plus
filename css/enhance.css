@@ -1,0 +1,44 @@
+:root {
+    --main-bg-color: #F7F7F7;
+    --main-color: #293E40;
+    --secondary-color: #000000;
+    --muted-color:#81B5A1;
+    --alt-bg-color: #e7e7e7;
+    --disabled-color: #cecece;
+    --btn-color: var(--main-color);
+    --btn-hover-color:#81B5A1;
+}
+html {
+    height: 100%;
+}
+body {
+    font-family: 'Helvetica', sans-serif;
+    color: var(--main-color);
+    background-color: var(--main-bg-color);
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 10pt;
+    min-height: 400px;
+}
+.project-title {
+    font-weight: bold;
+    font-size: larger;
+}
+ul { list-style: none; }
+li { 
+    margin: 1rem;
+    cursor: grab; 
+    user-select: none;
+}
+li::before {
+    content: "▢";
+}
+ul#project-list {
+    padding: 0 3px 3px 3px;
+    border: 2px solid var(--disabled-color);
+    width: 500px;
+    height: 500px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

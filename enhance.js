@@ -1,5 +1,5 @@
 const context = {
-    projectCodes: localStorage.projectCodes || {}, // collection of objects: projectCode: { show: bool, new: bool }
+    projectCodes: localStorage.projectCodes || {}, // collection of objects: projectCode: { show: bool, new: bool, desc: string, order: integer }
     observer: false
 }
 
@@ -30,7 +30,7 @@ const resizeTable = () => {
     let projectCodes = document.querySelectorAll('input[role="combobox"]');
     [].forEach.call(projectCodes, (el) => {
         if (context.projectCodes[el.value] === undefined) {
-            context.projectCodes[el.value] = { show: true, new: true };
+            context.projectCodes[el.value] = { show: true, new: true, desc: "", order: 999 };
         }
     });
     saveCodes();

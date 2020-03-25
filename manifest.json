@@ -13,5 +13,13 @@
       "js": ["enhance.js"]
     }
   ],
+  "browser_action": {
+    "browser_style": true,
+    "default_title": "Oracle Fusion Enhancer",
+    "default_icon": {
+        "48": "icons/icon-48.png"
+    },
+    "default_popup": "dialog/enhanceDialog.html"
+  },
   "permissions": ["storage"]
 }
