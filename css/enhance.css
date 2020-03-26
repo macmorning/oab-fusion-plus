@@ -20,6 +20,9 @@ body {
     font-size: 10pt;
     min-height: 400px;
 }
+.no_underline, .no_underline:hover {
+    text-decoration: none;
+}
 .project-title {
     font-weight: bold;
     font-size: larger;
@@ -27,18 +30,48 @@ body {
 ul { list-style: none; }
 li { 
     margin: 1rem;
-    cursor: grab; 
-    user-select: none;
 }
 li::before {
-    content: "▢";
+    content: "⧮";
+    color: var(--disabled-color);
+}
+li:hover:before {
+    user-select: none;
+    cursor: grab;
+    color: var(--main-color);
 }
 ul#project-list {
     padding: 0 3px 3px 3px;
-    border: 2px solid var(--disabled-color);
     width: 500px;
     height: 500px;
     max-height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+.project-description {
+    margin-left: 1rem;
+    line-height: 1.2rem;
+    overflow: hidden;
+    word-wrap: none;
+}
+.row-commands {
+    cursor: pointer;
+    text-align: right;
+    float: right;
+    margin-right: 15px;
+    font-size: large;
+}
+.button-muted, .button-disabled {
+    margin-left: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: var(--disabled-color);
+    text-decoration: none;   
+    font-weight: bold;
+}
+.button-muted {
+    cursor: pointer;
+}
+.button-muted:hover {
+    color: var(--main-color);
 }

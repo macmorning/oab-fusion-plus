@@ -8,9 +8,13 @@
     </head>
     <body>
         <template id="project-row-template">
-            <li draggable="true" name="project-row">
+            <li project-id="{{title}}" draggable="true" name="project-row">
                 <span class="project-title" name="project-title">{{title}}</span>
-                <span name="project-description">{{description}}</span>
+                <!--a class="no_underline button-disabled row-commands" title="show/hide - coming soon">&#128065;</a-->
+                <a class="no_underline button-muted row-commands" title="copy code">&#9984;</a>
+                <a class="no_underline button-muted row-commands" title="change description">&#9088;</a>
+                <br/>
+                <span class="project-description" name="project-description">{{description}}</span>
             </li>
         </template>
 
