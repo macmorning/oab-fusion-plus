@@ -29,6 +29,7 @@ const resizeTable = () => {
 
     let projectCodes = document.querySelectorAll('input[role="combobox"]');
     [].forEach.call(projectCodes, (el) => {
+        if (!el.value || el.value === "") { return true; }
         if (context.projectCodes[el.value] === undefined) {
             context.projectCodes[el.value] = { show: true, new: true, desc: "", order: 999 };
         }
@@ -55,7 +56,8 @@ const resizeTable = () => {
 };
 
 const initListener = () => {
-    if (window.location.search.indexOf("fndGlobalItemNodeId=timecards")) {
+    console.log("initListener " + window.location.search.indexOf("fndGlobalItemNodeId=timecards"));
+    if (window.location.search.indexOf("fndGlobalItemNodeId=timecards") > -1) {
         let baseElement = document.querySelector("div"); // First div of document is what we're looking for
         if (baseElement) {
             // Create an observer instance linked to the callback function
@@ -69,5 +71,5 @@ const initListener = () => {
         context.observer.disconnect();
     }
 };
+window.setTimeout(initListener, 1000); // check if we are on a timesheet page and add listeners
 window.addEventListener("load", initListener);
-window.addEventListener("hashchange", initListener);
