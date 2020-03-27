@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Oracle Fusion Enhancer",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Oracle Fusion enhancer for users",
   "homepage_url": "https://github.com/macmorning/oab-fusion-plus",
   "icons": {

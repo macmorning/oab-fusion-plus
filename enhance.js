@@ -8,6 +8,19 @@ chrome.storage.local.get(["projectCodes"], (result) => {
     context.projectCodes = JSON.parse(result.projectCodes);
     console.log(context.projectCodes);
 });
+
+/**
+ * Handles a change event coming from storage
+ * @param {Object} objChanged an object that contains the items that changed with newValue and oldValue
+ * @param {String} area Storage area
+ */
+function storageEvent (objChanged, area) {
+    // FF doesn't check if there is an actual change between new and old values
+    if (objChanged.projectCodes && objChanged.projectCodes.newValue !== objChanged.projectCodes.oldValue) {
+        context.projectCodes = objChanged.projectCodes.newValue;
+    }
+}
+
 /**
  * Saves the options into storage
  */
