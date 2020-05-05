@@ -117,6 +117,7 @@ function dragEnd() {
       console.log(id +  ">" + order);
       context.projectCodes[id].order = order;
     });
+    console.log(context.projectCodes);
     saveProjects();
 }
 

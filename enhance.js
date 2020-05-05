@@ -4,9 +4,8 @@ const context = {
 }
 
 chrome.storage.local.get(["projectCodes"], (result) => {
-    console.log("Loaded projectCodes from storage");
     context.projectCodes = JSON.parse(result.projectCodes);
-    console.log(context.projectCodes);
+    chrome.storage.onChanged.addListener(storageEvent);
 });
 
 /**
@@ -17,7 +16,7 @@ chrome.storage.local.get(["projectCodes"], (result) => {
 function storageEvent (objChanged, area) {
     // FF doesn't check if there is an actual change between new and old values
     if (objChanged.projectCodes && objChanged.projectCodes.newValue !== objChanged.projectCodes.oldValue) {
-        context.projectCodes = objChanged.projectCodes.newValue;
+        context.projectCodes = JSON.parse(objChanged.projectCodes.newValue);
     }
 }
 
@@ -28,11 +27,9 @@ const saveCodes = () => {
     try {
         chrome.storage.local.set({
             "projectCodes": JSON.stringify(context.projectCodes)
-        }, function () {
-            console.log("Saved projects to storage");
-        });
+        }, function () {});
     } catch (e) {
-        console.log(e);
+        console.warn(e);
     }
 };
 
