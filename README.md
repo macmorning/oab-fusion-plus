@@ -7,13 +7,17 @@ L'extension est publiée [sur le store Mozilla](https://addons.mozilla.org/en-US
 
 0.6.1:
 - correction d'un bug qui écrasait parfois l'ordre des projets
+
 0.5.0:
 - une boîte de dialogue est accessible depuis un bouton situé au niveau de l'url, permet de trier les codes projets enregistrés, de leur ajouter une description, et de les copier dans le presse-papier
+
 0.3.0:
 - recherche des éléments à redimensionner par les classes des tables parentes plutôt que par des libellés
 - stockage des codes projets dans le localStorage (en prévision de leur réutilisation dans une future version)
+
 0.2.0:
 - déclenchement du redimensionnement sur observation d'un évènement plutôt que sur un timeout
+
 0.1.0:
 - extension de la largeur de la table de saisie des temps permettant de lire les codes projets sélectionnés
 
