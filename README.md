@@ -3,9 +3,12 @@
 ## Raison d'être et fonctionnalités
 
 Cette extension est destinée aux utilisateurs de Oracle Fusion et en particulier (pour le moment) des Timesheets pour leur faciliter la tâche de saisie des temps.
-L'extension n'est pour le moment pas publiée sur un store, elle doit être installée manuellement, voir la section suivante.
+L'extension est publiée [sur le store Mozilla](https://addons.mozilla.org/en-US/firefox/addon/oracle-fusion-enhancer/) mais pas sur celui de Chrome pour lequel elle doit être installée manuellement, voir section suivante.
 
-
+0.6.1:
+- correction d'un bug qui écrasait parfois l'ordre des projets
+0.5.0:
+- une boîte de dialogue est accessible depuis un bouton situé au niveau de l'url, permet de trier les codes projets enregistrés, de leur ajouter une description, et de les copier dans le presse-papier
 0.3.0:
 - recherche des éléments à redimensionner par les classes des tables parentes plutôt que par des libellés
 - stockage des codes projets dans le localStorage (en prévision de leur réutilisation dans une future version)
@@ -21,8 +24,6 @@ Télécharger le fichier zip :
 https://github.com/macmorning/oab-fusion-plus/blob/master/dist/oab-fusion-plus.zip
 
 Le décompresser dans un répertoire local.
-
-Sous Firefox, accéder à la page "about:debugging", cliquer sur "This Firefox", puis sur "Load Temporary Add-on...". Dans la fenêtre qui s'ouvre, naviguer jusqu'au répertoire décompressé, sélectionner manifest.json, puis cliquer sur "ouvrir".
 
 Sous Chrome/ium, accéder à la page "chrome://extensions", activer le "mode développeur" (toggle en haut à droite) et cliquer sur "Charger l'extension non empaquetée". Dans la fenêtre qui s'ouvre, naviguer jusqu'au répertoire décompressé, puis cliquer sur "sélectionner un dossier".
 
